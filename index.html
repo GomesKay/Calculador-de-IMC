@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="iconetitulo/ico/imc.ico"
+      type="image/x-icon"
+    />
+    <title>Calculadora IMC</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto+Condensed:wght@500;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+      }
+
+      :root {
+        --white: #fff;
+        --black: #000;
+        --cyprus: #0e2045;
+        --royal-blue: #3d73dd;
+        --azure: #4080ff;
+      }
+
+      .cabecalho {
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4pc;
+        font-weight: 500;
+        font-family: "Roboto Condensed", sans-serif;
+        background-color: var(--royal-blue);
+      }
+
+      .conteudo-imc {
+        font-family: "Open Sans";
+        background-color: var(--white);
+      }
+
+      .conteudo-imc-titulo {
+        display: flex;
+        flex-direction: column;
+        margin: 5pc 0 0 20pc;
+      }
+
+      .conteudo-imc-texto {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1pc;
+        margin-top: 4pc;
+      }
+
+      .conteudo-imc-texto-titulo {
+        text-align: center;
+      }
+
+      .conteudo-calculadora {
+        color: var(--white);
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 4pc;
+        padding: 10pc;
+        background-color: var(--black);
+      }
+
+      .conteudo-calculadora-calculo {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6pc;
+        font-family: "Open Sans", sans-serif;
+      }
+
+      .conteudo-calculadora-input {
+        width: 100%;
+        padding: 1pc 1.5pc;
+        margin: 0.5pc 0;
+        box-sizing: border-box;
+        font-family: "Open Sans", sans-serif;
+      }
+
+      .conteudo-calculadora-botao {
+        border: 0;
+        color: var(--white);
+        cursor: pointer;
+        padding: 1pc;
+        width: 6pc;
+        height: 3pc;
+        background-color: var(--royal-blue);
+      }
+
+      .conteudo-calculadora-botao:hover {
+        color: var(--cyprus);
+        background-color: var(--azure);
+      }
+
+      .conteudo-calculadora-resultado {
+        margin-top: 5pc;
+      }
+
+      .rodape {
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4pc;
+        font-weight: 700;
+        font-family: "Roboto Condensed", sans-serif;
+        background-color: var(--cyprus);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="cabecalho">
+      <h1>CALCULADOR IMC</h1>
+    </header>
+    <main>
+      <section class="conteudo-imc">
+        <div class="conteudo-imc-titulo">
+          <h2 id="bem-vindo">Bem-Vindo,</h2>
+          <h3 id="nome"></h3>
+        </div>
+        <div class="conteudo-imc-texto">
+          <h3 class="conteudo-imc-texto-titulo">O que é IMC?</h3>
+          <p>
+            O
+            <span style="font-weight: 700; color: var(--royal-blue)">IMC</span>
+            (Índice de Massa Corporal) é uma ferramenta usada para avaliar o
+            peso ideal <br />
+            de um indivíduo, além de detectar casos de obesidade ou desnutrição
+            em pessoas <br />
+            de diferente idades.
+          </p>
+          <p>
+            Com isso pode ser feito um cálculo, dividindo seu peso e altura
+            elevado ao quadrado. <br />
+            Por exemplo:
+          </p>
+          <ul>
+            <li>Altura multiplicada por ela mesma: 1,70 x 1,70 = 2,89</li>
+            <li>Peso dividido pelo quadrado da altura: 70 / 2,89 = 24,22</li>
+          </ul>
+          <p>Resultado do exemplo é de 24.</p>
+        </div>
+      </section>
+      <section class="conteudo-calculadora">
+        <div class="conteudo-calculadora-calculo">
+          <h2>Calculadora</h2>
+          <label>Informe seu peso (kg):</label>
+          <input
+            type="number"
+            class="conteudo-calculadora-input"
+            id="peso"
+            placeholder="Ex: 69"
+          />
+          <label>Informe sua altura (metro e cm):</label>
+          <input
+            type="number"
+            class="conteudo-calculadora-input"
+            id="altura"
+            placeholder="Ex: 1,79"
+          />
+          <input
+            type="button"
+            class="conteudo-calculadora-botao"
+            id="botao"
+            value="Calcular"
+          />
+        </div>
+        <div class="conteudo-calculadora-resultado">
+          <span
+            style="
+              font-size: 3pc;
+              font-weight: 700;
+              font-family: 'Roboto Condensed', sans-serif;
+            "
+            id="resultado_numero"
+          ></span
+          ><br />
+          <span
+            style="
+              font-size: 1pc;
+              font-weight: 700;
+              font-family: 'Open Sans', sans-serif;
+            "
+            id="resultado_paragrafo"
+          ></span>
+        </div>
+      </section>
+    </main>
+    <footer class="rodape">
+      <h2>© Caio Gomes</h2>
+    </footer>
+  </body>
+  <script>
+    let nome = prompt("Qual seu nome?");
+    let ps = document.getElementById("peso");
+    let alt = document.getElementById("altura");
+    let botao = document.getElementById("botao");
+    let res_numero = document.getElementById("resultado_numero");
+    let res_paragrafo = document.getElementById("resultado_paragrafo");
+
+    if (nome.length == 0) {
+      alert("ERRO - Nome não inserido");
+      let welcome = document.getElementById("bem-vindo");
+      welcome.innerHTML = `Bem-Vindo!`;
+    } else {
+      let campo_nome = document.getElementById("nome");
+      campo_nome.innerHTML = `${nome}`;
+    }
+
+    botao.addEventListener("click", function () {
+      let peso = ps.value;
+      let altura = alt.value;
+
+      if (peso == 0 || altura == 0) {
+        alert("Valor não inserido");
+      } else {
+        altura_elevada = altura * altura;
+        let res = peso / altura_elevada;
+        let resultado = res.toFixed(1);
+        res_numero.innerHTML = `${resultado}`;
+
+        if (resultado < 18.5) {
+          res_paragrafo.innerHTML = "Baixo Peso";
+          res_paragrafo.style.color = "#247158";
+        } else if (resultado >= 18.5 && resultado <= 24.9) {
+          res_paragrafo.innerHTML = "Peso Ideal";
+          res_paragrafo.style.color = "#6AB29B";
+        } else if (resultado >= 25 && resultado <= 29.9) {
+          res_paragrafo.innerHTML = "Sobrepeso";
+          res_paragrafo.style.color = "#F97C5C";
+        } else if (resultado >= 30) {
+          res_paragrafo.innerHTML = "Obesidade";
+          res_paragrafo.style.color = "#EA2A4F";
+        }
+      }
+    });
+  </script>
+</html>
